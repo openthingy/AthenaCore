@@ -1,0 +1,25 @@
+{
+  "name": "erpcore",
+  "description": "Fully built on Typescript",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openthingy/ERPCore.git"
+  },
+  "author": "openthingy",
+  "license": "SEE LICENSE IN LICENSE FILE",
+  "bugs": {
+    "url": "https://github.com/openthingy/ERPCore/issues"
+  },
+  "homepage": "https://github.com/openthingy/ERPCore#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/parser": "^5.41.0",
+    "eslint": "^8.26.0",
+    "typescript": "^4.8.4"
+  }
+}
