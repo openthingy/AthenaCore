@@ -1,4 +1,5 @@
 {
-    "url": "test_url_here",
+    "uri": "test_url_here",
+    "db": "db_here",
     "collection": "collection_name" 
 }

@@ -1,11 +1,12 @@
-import { MongoClient } from "mongodb";
-import { url, collection } from "./example.details.json";
+import { Db, MongoClient } from "mongodb";
+import details from "./details.json" assert {"type": "json"};
 
-async function generateConnection(){
-    const client = new MongoClient(url);
+async function generateConnection(): Promise<MongoClient|Db> {
+    const client = new MongoClient(details.uri);
     await client.connect();
-    const conn = client.db(collection);
-    return conn;
+    return client.db(details.db);
 }
 
-export { generateConnection };
+export { 
+    generateConnection
+};
