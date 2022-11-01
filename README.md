@@ -3,7 +3,7 @@ Fully built on Typescript
 
 # Modules
 * Sales
-* Distributiom
+* Inventory/Distributiom
 * People
 * HR
 * Financial
