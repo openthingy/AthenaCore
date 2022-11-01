@@ -1,0 +1,34 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Typescript build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ "main" ]
+  schedule:
+    - cron: '30 12 * * 1'
+
+jobs:
+  eslint:
+    name: Build repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+      actions: read 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install necessary libraries
+        run: npm install
+
+      - name: Run Typescript build
+        run: npx tsc
+        continue-on-error: false
