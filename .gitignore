@@ -131,3 +131,6 @@ dist
 
 # Dont include the build folder
 build/
+
+# Dont post the database credentials
+database/connection/details.json
