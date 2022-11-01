@@ -1,0 +1,5 @@
+{
+    "uri": "mongodb://admin:password@address:27017/?directConnection=true&serverSelectionTimeoutMS=2000",
+    "db": "database",
+    "collection": "erpTest" 
+}

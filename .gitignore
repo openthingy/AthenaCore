@@ -133,4 +133,4 @@ dist
 build/
 
 # Dont post the database credentials
-database/connection/details.json
+#database/connection/details.json
