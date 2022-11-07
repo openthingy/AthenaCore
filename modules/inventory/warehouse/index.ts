@@ -2,12 +2,14 @@ import { InsertOneResult } from "mongodb";
 import * as db from "../../../database/index.js";
 import { address } from "../../interfaces/client.js";
 
-async function createWarehouse(code: string, address: address): Promise<boolean> {
+
+async function createWarehouse(code: string, name: string, address: address): Promise<boolean> {
+    // code is _id
     try {
         const client = await db.generateConnection();
-        const warehouses: number = await client.collection("warehouses").countDocuments({"code": code});
+        const warehouses: number = await client.collection("warehouses").countDocuments({"_id": code});
         if (warehouses != 0) {
-            const createWarehouse: InsertOneResult<Document> = await client.collection("warehouses").insertOne({"code": code, "address": address});
+            const createWarehouse: InsertOneResult<Document> = await client.collection("warehouses").insertOne({"_id": code, "name": name, "address": address } as any);
             if (createWarehouse.acknowledged) {
                 return true;
             } else {
