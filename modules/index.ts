@@ -1,5 +1,5 @@
 import { EventEmitter } from "events";
 
-const globalEmitter = new EventEmitter();
+const globalEmitter: EventEmitter = new EventEmitter();
 
 export { globalEmitter };
