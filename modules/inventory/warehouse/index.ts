@@ -1,4 +1,4 @@
-import { InsertOneResult } from "mongodb";
+import { InsertOneResult} from "mongodb";
 import * as db from "../../../database/index.js";
 import { address } from "../../interfaces/client.js";
 
@@ -9,7 +9,7 @@ async function createWarehouse(code: string, name: string, address: address): Pr
         const client = await db.generateConnection();
         const warehouses: number = await client.collection("warehouses").countDocuments({"_id": code});
         if (warehouses != 0) {
-            const createWarehouse: InsertOneResult<Document> = await client.collection("warehouses").insertOne({"_id": code, "name": name, "address": address } as any);
+            const createWarehouse: InsertOneResult<Document> = await client.collection("warehouses").insertOne({"_id": code, "name": name, "address": address } as object);
             if (createWarehouse.acknowledged) {
                 return true;
             } else {
