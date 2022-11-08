@@ -1,6 +1,7 @@
 import { ObjectId } from "mongodb";
 
-interface address {
+
+interface Address {
     street: string,
     houseNumber: string,
     postalCode: string,
@@ -8,10 +9,11 @@ interface address {
     country: string
 }
 
-interface client {
-    id: ObjectId,
+interface Client {
+    _id: ObjectId
+    name: string,
     vatId: string,
-    address: address
+    address: Address
 }
 
-export { address, client };
+export { Address, Client };
