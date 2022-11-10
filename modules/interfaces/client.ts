@@ -11,7 +11,9 @@ interface Address {
 
 interface Client {
     _id: ObjectId
-    name: string,
+    name: string, // Legal Name
+    dob: string,
+    email: string,
     vatId: string,
     address: Address
 }

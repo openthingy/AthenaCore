@@ -1,19 +1,19 @@
 import { ObjectId } from "mongodb";
-import { client, address } from "./client.js";
+import { Client, Address } from "./client.js";
 
-interface itemsQuant {
+interface ItemsQuantity {
     itemId: ObjectId,
     price: number, // Price per item at the sales date
     quant: number
 }
 
-interface sale {
-    id: ObjectId,
-    items: Array<itemsQuant>,
-    client: client,
-    shippingAddress: address | undefined
+interface Sale {
+    _id: ObjectId,
+    items: Array<ItemsQuantity>,
+    client: Client,
+    shippingAddress: Address | undefined
     status: "Payment Pending" | "Payment Failed" | "Canceled" | "Processing" | "Shipped" | "Completed" | "Refunded"
     date: Date
 }
 
-export { sale };
+export { Sale };

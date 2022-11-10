@@ -1,4 +1,4 @@
-import { InsertOneResult } from "mongodb";
+import { InsertOneResult, WithId } from "mongodb";
 import * as db from "../../database/index.js";
 import { WarehouseInfo } from "../interfaces/inventory/warehouse.js";
 
@@ -24,7 +24,7 @@ class warehouse {
         return false;
     }
 
-    public async getWarehouse(code: WarehouseInfo["_id"]) {
+    public async getWarehouse(code: WarehouseInfo["_id"]): Promise<WithId<Document | null> | null | false > {
         try {
             const client = await db.generateConnection();
             const warehouses: number = await client.collection("warehouses").countDocuments({"_id": code});

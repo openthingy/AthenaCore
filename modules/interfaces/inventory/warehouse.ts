@@ -1,8 +1,8 @@
-import { address } from "../client.js";
+import { Address } from "../client.js";
 
 interface WarehouseInfo {
-    _id: string,    // ID is the Code for the warehouse (ex. OPOSC-01 Porto Santa Catarina 01)
+    _id: string,    // ID is the Code for the warehouse (ex. OPOSC-01 aka Porto Santa Catarina 01)
     name: string,
-    address: address
+    address: Address
 }
 export { WarehouseInfo };
