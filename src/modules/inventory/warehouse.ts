@@ -1,6 +1,6 @@
 import { Document, InsertOneResult, WithId } from "mongodb";
 import * as db from "../../database/index.js";
-import { WarehouseInfo } from "../interfaces/inventory/warehouse.js";
+import { WarehouseInfo } from "../validation/interfaces/inventory/warehouse.js";
 
 class warehouse {
     public async createWarehouse(warehouse: WarehouseInfo): Promise<boolean> {

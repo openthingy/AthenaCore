@@ -1,10 +1,11 @@
-import { Client } from "../interfaces/client.js";
+import { Client } from "../validation/interfaces/client.js";
 import * as db from "../../database/index.js";
 import { Document, WithId } from "mongodb";
 
 class clients {
-    public static async createClient() {
-        console.log("a");
+    public static async createClient(newClient: Client) {
+        
+        console.log(newClient);
     }
 
     public static async getClient(id?: Client["_id"], name?:  Client["name"], vatId?: Client["vatId"]): Promise< WithId<Document> | null | false > {
