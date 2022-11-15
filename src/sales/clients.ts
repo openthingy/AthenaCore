@@ -1,5 +1,5 @@
 import { Client } from "../validation/interfaces/client.js";
-import * as db from "../../database/index.js";
+import * as db from "../database/index.js";
 import { Document, WithId } from "mongodb";
 
 class clients {
