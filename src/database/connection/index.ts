@@ -1,5 +1,5 @@
 import { MongoClient, Db } from "mongodb";
-import details from "./details.json" assert {"type": "json"};
+import details from "./details.json";
 
 async function generateConnection(): Promise<Db> {
     const client = new MongoClient(details.uri);
