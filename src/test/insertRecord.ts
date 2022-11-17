@@ -1,4 +1,4 @@
-import * as db from "../database/connection/index.js";
+import * as db from "../database/connection/index";
 
 console.log("Test 1: Record insertion");
 const initialClient = await db.generateConnection();

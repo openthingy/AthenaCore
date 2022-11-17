@@ -1,5 +1,5 @@
-import { Client } from "../interfaces/client.js";
-import * as db from "../database/index.js";
+import { Client } from "../interfaces/client";
+import * as db from "../database/index";
 import { Document, WithId } from "mongodb";
 
 class clients {
