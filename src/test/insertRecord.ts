@@ -3,8 +3,8 @@ import * as db from "../database/connection/index";
 console.log("Test 1: Record insertion");
 const initialClient = await db.generateConnection();
 try {
-    const client = await db.selectDb(initialClient);
-    const insertRecord = await client.collection("user").insertOne({"a": "a"});
+    const client = await initialClient.db("test").collection("user");
+    const insertRecord = await client.insertOne({"a": "a"});
     console.log(insertRecord);
     process.exit();
 } catch (error) {

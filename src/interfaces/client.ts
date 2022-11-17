@@ -10,7 +10,7 @@ interface Address {
 }
 
 interface Client {
-    _id: ObjectId
+    _id: ObjectId | undefined,
     name: string, // Legal Name
     dob: string,
     email: string,

@@ -1,4 +1,4 @@
-import { MongoClient, Db } from "mongodb";
+import { MongoClient } from "mongodb";
 import details from "./details.json";
 
 async function generateConnection(): Promise<MongoClient> {
@@ -6,12 +6,6 @@ async function generateConnection(): Promise<MongoClient> {
     return client;
 }
 
-async function selectDb(client: MongoClient): Promise<Db> {
-    await client.connect();
-    return client.db(details.db);
-}
-
 export { 
-    generateConnection,
-    selectDb
+    generateConnection
 };
