@@ -1,6 +1,6 @@
 import { Document, WithId } from "mongodb";
 import * as db from "../database/index";
-import { WarehouseInfo } from "../interfaces/inventory/warehouse";
+import { WarehouseInfo } from "../interfaces/logistics/warehouse";
 
 class warehouse {
     public static async createWarehouse(warehouse: WarehouseInfo): Promise<boolean> {
