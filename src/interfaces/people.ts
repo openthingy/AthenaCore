@@ -7,7 +7,9 @@ interface People {
     vatId: string,
     ssn: string,
     email: string,
-    phoneNumber: string
+    phoneNumber: string,
+    password: string
+    roles: Array<string>
 }
 
 export { People };
