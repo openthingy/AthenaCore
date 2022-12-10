@@ -1,6 +1,7 @@
 import { Address } from "./general";
 
-interface People {
+interface Employee {
+    id: string,
     name: string,
     dob: Date,
     address: Address,
@@ -12,4 +13,4 @@ interface People {
     roles: Array<string>
 }
 
-export { People };
+export { Employee };

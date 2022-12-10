@@ -1,5 +1,6 @@
 import { ObjectId } from "mongodb";
 import * as db from "../database";
+import { Employee } from "../interfaces/people";
 
 class employee {
     /**
@@ -23,13 +24,16 @@ class employee {
     /**
      * Get a specific employee using Id or email
      * @function
-     * @param {ObjectId} [uid] User Id.
-     * @param {string} [role] Role to check.
+     * @param {ObjectId} [id]          Internal Database Id.
+     * @param {Employee["id"]} [empId] Internal Database Id.
+     * @param {Employee["email"]} [id] Internal Database Id.
      * @returns {object|null} Returns the employee if it exists
      */
-    public static async getEmployee(id?: ObjectId, email?: string) {
+    public static async getEmployee(id?: ObjectId, empId?: Employee["id"], email?: Employee["email"]) {
         if (typeof id != "undefined") {
             return this.getEmployeeById(id);
+        } else if (typeof empId != "undefined") {
+            return this.getEmployeeByEmpId(empId);
         } else if (typeof email != "undefined") {
             return this.getEmployeeByEmail(email);
         } else {
@@ -41,7 +45,7 @@ class employee {
      * Get a specific employee using Id
      * @function
      * @private
-     * @param {ObjectId} uid User Id.
+     * @param {ObjectId} id User Id.
      * @returns {object|null} Returns the specific employee
      */
     private static async getEmployeeById(id: ObjectId) {
@@ -49,6 +53,27 @@ class employee {
         try {
             const dbClient = initialDbClient.db("people").collection("employees");
             const result = await dbClient.findOne({"_id": id});
+            return result;
+        } catch (error) {	
+            console.log("Error: " + error);
+            return false;
+        } finally {
+            initialDbClient.close();
+        }
+    }
+
+    /**
+     * Get a specific employee using the Employee Id
+     * @function
+     * @private
+     * @param {Employee["id"]} empid Employee Id.
+     * @returns {object|null} Returns the specific employee
+     */
+    private static async getEmployeeByEmpId(empId: Employee["id"]) {
+        const initialDbClient = await db.generateConnection();
+        try {
+            const dbClient = initialDbClient.db("people").collection("employees");
+            const result = await dbClient.findOne({"id": empId});
             return result;
         } catch (error) {	
             console.log("Error: " + error);
