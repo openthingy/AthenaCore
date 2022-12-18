@@ -1,4 +1,4 @@
-# Core of ERP
+# Core of the Athena ERP
 Fully built on Typescript
 
 # Modules
