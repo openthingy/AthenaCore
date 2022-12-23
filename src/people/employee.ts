@@ -4,20 +4,44 @@ import { Employee } from "../interfaces/people";
 
 class employee {
     /**
+     * Create a new employee
+     * @function
+     * @param {Employee} employee Employee object
+     * @returns {ObjectId|null} Returns the employee Id if it was created
+     */
+    public static async createEmployee(employee: Employee) {
+        const dbClient = await db.generateConnection();
+        try {
+            const empCollection = dbClient.db("people").collection("employees");
+            const newEmployee = await empCollection.insertOne(employee);
+            if (newEmployee.acknowledged)   {
+                return newEmployee.insertedId;
+            } else {
+                return false;
+            }
+        } catch (error) {
+            console.log("Error: " + error);
+            return false;
+        } finally {
+            dbClient.close();
+        }
+    }
+
+    /**
      * Get all employees
      * @function
      * @returns {object|null} Returns all employees
      */
     public static async getEmployees() {
-        const initialDbClient = await db.generateConnection();
+        const dbClient = await db.generateConnection();
         try {
-            const dbClient = initialDbClient.db("people").collection("employees");
-            const result = await dbClient.find({}).toArray();
+            const empCollection = dbClient.db("people").collection("employees");
+            const result = await empCollection.find({}).toArray();
             return result;
         } catch (error) {
             console.log("Error: " + error);
         } finally {
-            initialDbClient.close();
+            dbClient.close();
         }
     }
 
@@ -49,16 +73,16 @@ class employee {
      * @returns {object|null} Returns the specific employee
      */
     private static async getEmployeeById(id: ObjectId) {
-        const initialDbClient = await db.generateConnection();
+        const dbClient = await db.generateConnection();
         try {
-            const dbClient = initialDbClient.db("people").collection("employees");
-            const result = await dbClient.findOne({"_id": id});
+            const empCollection = dbClient.db("people").collection("employees");
+            const result = await empCollection.findOne({"_id": id});
             return result;
         } catch (error) {	
             console.log("Error: " + error);
             return false;
         } finally {
-            initialDbClient.close();
+            dbClient.close();
         }
     }
 
@@ -70,16 +94,16 @@ class employee {
      * @returns {object|null} Returns the specific employee
      */
     private static async getEmployeeByEmpId(empId: Employee["id"]) {
-        const initialDbClient = await db.generateConnection();
+        const dbClient = await db.generateConnection();
         try {
-            const dbClient = initialDbClient.db("people").collection("employees");
-            const result = await dbClient.findOne({"id": empId});
+            const empCollection = dbClient.db("people").collection("employees");
+            const result = await empCollection.findOne({"id": empId});
             return result;
         } catch (error) {	
             console.log("Error: " + error);
             return false;
         } finally {
-            initialDbClient.close();
+            dbClient.close();
         }
     }
 
@@ -91,15 +115,15 @@ class employee {
      * @returns {object|null} Returns the specific employee
      */
     private static async getEmployeeByEmail(email: string) {
-        const initialDbClient = await db.generateConnection();
+        const dbClient = await db.generateConnection();
         try {
-            const dbClient = initialDbClient.db("people").collection("employees");
-            const result = await dbClient.findOne({"email": email});
+            const empCollection = dbClient.db("people").collection("employees");
+            const result = await empCollection.findOne({"email": email});
             return result;
         } catch (error) {	
             console.log("Error: " + error);
         } finally {
-            initialDbClient.close();
+            dbClient.close();
         }
     }
 
@@ -111,16 +135,16 @@ class employee {
      */
     public static async getEmployeeRoles(id: ObjectId) {
         
-        const initialDbClient = await db.generateConnection();
+        const dbClient = await db.generateConnection();
         try {
-            const dbClient = initialDbClient.db("people").collection("employees");
-            const result = await dbClient.findOne({"id": id}, { projection: {"roles": 1}});
+            const empCollection = dbClient.db("people").collection("employees");
+            const result = await empCollection.findOne({"id": id}, { projection: {"roles": 1}});
             return result;
         } catch (error) { 
             console.log("Error: " + error);
             return false;
         } finally {
-            initialDbClient.close();
+            dbClient.close();
         }
     }
 
