@@ -49,8 +49,8 @@ class employee {
      * Get a specific employee using Id or email
      * @function
      * @param {ObjectId} [id]          Internal Database Id.
-     * @param {Employee["id"]} [empId] Internal Database Id.
-     * @param {Employee["email"]} [id] Internal Database Id.
+     * @param {Employee["id"]} [empId] Employee Id.
+     * @param {Employee["email"]} [id] Employee email.
      * @returns {object|null} Returns the employee if it exists
      */
     public static async getEmployee(id?: ObjectId, empId?: Employee["id"], email?: Employee["email"]) {
