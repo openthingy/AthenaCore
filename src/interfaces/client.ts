@@ -1,13 +1,5 @@
 import { ObjectId } from "mongodb";
-
-
-interface Address {
-    street: string,
-    houseNumber: string,
-    postalCode: string,
-    city: string,
-    country: string
-}
+import { Address } from "./general";
 
 interface Client {
     _id: ObjectId | undefined,
@@ -18,4 +10,4 @@ interface Client {
     address: Address
 }
 
-export { Address, Client };
+export { Client };
