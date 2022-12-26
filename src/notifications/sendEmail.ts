@@ -5,7 +5,7 @@ class email {
     public static async plain(to: string, subject: string, body: string) {
         // Get the credentials from the database
         const dbClient = await db.generateConnection();
-        let smtpConfig; // Global
+        let smtpConfig;
         try {
             const configCollection = dbClient.db("config").collection("notifications");
             smtpConfig = await configCollection.findOne({"type": "smtp"});
