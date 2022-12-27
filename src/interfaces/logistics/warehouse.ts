@@ -1,4 +1,4 @@
-import { Address } from "../client";
+import { Address } from "../general";
 
 interface WarehouseInfo {
     _id: string,    // ID is the Code for the warehouse (ex. OPOSC-01 aka Porto Santa Catarina 01)

@@ -4,15 +4,15 @@ import { Document, WithId } from "mongodb";
 
 class clients {
     public static async createClient(newClient: Client) {
-        const initalDbClient = await db.generateConnection();
+        const initialDbClient = await db.generateConnection();
         try {
-            const dbClient = initalDbClient.db("sales").collection("clients");
+            const dbClient = initialDbClient.db("sales").collection("clients");
             const result = await dbClient.insertOne(newClient);
             return result;
         } catch (error) {	
             console.log("Error: " + error);
         } finally {
-            initalDbClient.close();
+            initialDbClient.close();
         }
         console.log(newClient);
     }
@@ -44,30 +44,30 @@ class clients {
     }
 
     private static async getClientByName(clientName: Client["name"]): Promise< WithId<Document> | null | false > {
-        const initalDbClient = await db.generateConnection();
+        const initialDbClient = await db.generateConnection();
         try {
-            const dbClient = initalDbClient.db("sales").collection("clients");
+            const dbClient = initialDbClient.db("sales").collection("clients");
             const clientByName = await dbClient.findOne({"name": clientName});
             return clientByName;
         } catch (err) {
             console.log("Error: " + err);
             return false;
         } finally {
-            initalDbClient.close();
+            initialDbClient.close();
         }
     }
 
     private static async getClientByVatId(clientVatId: Client["vatId"]): Promise< WithId<Document> | null | false > {
-        const initalDbClient = await db.generateConnection();
+        const initialDbClient = await db.generateConnection();
         try {
-            const dbClient = initalDbClient.db("sales").collection("clients");
+            const dbClient = initialDbClient.db("sales").collection("clients");
             const clientByVatId = await dbClient.findOne({"VatId": clientVatId});
             return clientByVatId;
         } catch (err) {
             console.log("Error: " + err);
             return false;
         } finally {
-            initalDbClient.close();
+            initialDbClient.close();
         }
     }
 }

@@ -1,5 +1,6 @@
 import { ObjectId } from "mongodb";
-import { Client, Address } from "./client";
+import { Client } from "./client";
+import { Address } from "./general";
 
 interface ItemsQuantity {
     itemId: ObjectId,
