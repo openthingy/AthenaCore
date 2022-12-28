@@ -1,21 +1,26 @@
 {
-  "name": "erpcore",
+  "name": "athenacore",
   "description": "Fully built on Typescript",
   "version": "1.0.0",
   "type": "commonjs",
-  "main": "index.ts",
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "src",
+    "tsconfig.json"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/openthingy/ERPCore.git"
+    "url": "git+https://github.com/openthingy/AthenaCore.git"
   },
   "author": "openthingy",
   "license": "SEE LICENSE IN LICENSE FILE",
   "bugs": {
-    "url": "https://github.com/openthingy/ERPCore/issues"
+    "url": "https://github.com/openthingy/AthenaCore/issues"
   },
   "homepage": "https://github.com/openthingy/ERPCore#readme",
   "devDependencies": {
