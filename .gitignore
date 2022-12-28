@@ -130,7 +130,7 @@ dist
 .pnp.*
 
 # Dont include the build folder
-build/
+lib
 
 # Dont post the database credentials
 #database/connection/details.json
