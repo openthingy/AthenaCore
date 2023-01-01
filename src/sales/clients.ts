@@ -1,6 +1,5 @@
 import { Client } from "../interfaces/client";
 import * as db from "../database/index";
-import { Document, WithId } from "mongodb";
 
 class clients {
     public static async createClient(newClient: Client) {
@@ -17,7 +16,7 @@ class clients {
         console.log(newClient);
     }
 
-    public static async getClient(id?: Client["_id"], name?:  Client["name"], vatId?: Client["vatId"]): Promise< WithId<Document> | null | false > {
+    public static async getClient(id?: Client["_id"], name?:  Client["name"], vatId?: Client["vatId"]) {
         if (typeof id != "undefined") {
             return this.getClientByID(id);
         } else if (typeof name != "undefined") {
@@ -29,45 +28,45 @@ class clients {
         }
     }
 
-    private static async getClientByID(clientId: Client["_id"]): Promise< WithId<Document> | null | false > {
-        const initalDbClient = await db.generateConnection();
+    private static async getClientByID(clientId: Client["_id"]) {
+        const dbClient = await db.generateConnection();
         try {
-            const dbClient = initalDbClient.db("sales").collection("clients");
-            const clientById = await dbClient.findOne({"_id": clientId});
+            const clientsCollection = dbClient.db("sales").collection("clients");
+            const clientById = await clientsCollection.findOne({"_id": clientId}) as Client | null;
             return clientById;
         } catch (err) {
             console.log("Error: " + err);
             return false;
         } finally {
-            initalDbClient.close();
+            dbClient.close();
         }
     }
 
-    private static async getClientByName(clientName: Client["name"]): Promise< WithId<Document> | null | false > {
-        const initialDbClient = await db.generateConnection();
+    private static async getClientByName(clientName: Client["name"]) {
+        const dbClient = await db.generateConnection();
         try {
-            const dbClient = initialDbClient.db("sales").collection("clients");
-            const clientByName = await dbClient.findOne({"name": clientName});
+            const clientsCollection = dbClient.db("sales").collection("clients");
+            const clientByName = await clientsCollection.findOne({"name": clientName}) as Client | null;
             return clientByName;
         } catch (err) {
             console.log("Error: " + err);
             return false;
         } finally {
-            initialDbClient.close();
+            dbClient.close();
         }
     }
 
-    private static async getClientByVatId(clientVatId: Client["vatId"]): Promise< WithId<Document> | null | false > {
-        const initialDbClient = await db.generateConnection();
+    private static async getClientByVatId(clientVatId: Client["vatId"]) {
+        const dbClient = await db.generateConnection();
         try {
-            const dbClient = initialDbClient.db("sales").collection("clients");
-            const clientByVatId = await dbClient.findOne({"VatId": clientVatId});
+            const clientsCollection = dbClient.db("sales").collection("clients");
+            const clientByVatId = await clientsCollection.findOne({"VatId": clientVatId}) as Client | null;
             return clientByVatId;
         } catch (err) {
             console.log("Error: " + err);
             return false;
         } finally {
-            initialDbClient.close();
+            dbClient.close();
         }
     }
 }
