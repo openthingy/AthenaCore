@@ -1,19 +1,24 @@
 import { ObjectId } from "mongodb";
 import { Client } from "./client";
 import { Address } from "./general";
+import { taxRate } from "./taxes";
 
-interface ItemsQuantity {
+interface Item {
     itemId: ObjectId,
-    price: number, // Price per item at the sales date
-    quant: number
+    price: number,
+    quant: number,
+    tax: taxRate // in percentage (23 = 23%)
 }
 
 interface Sale {
     _id: ObjectId,
-    items: Array<ItemsQuantity>,
+    items: Array<Item>,
     client: Client,
-    shippingAddress: Address | undefined
-    status: "Payment Pending" | "Payment Failed" | "Canceled" | "Processing" | "Shipped" | "Completed" | "Refunded"
+    address: {
+        billing: Address,
+        shipping: Address
+    },
+    status: string,
     date: Date
 }
 
