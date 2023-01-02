@@ -1,0 +1,5 @@
+class sales {
+
+}
+
+export { sales };
