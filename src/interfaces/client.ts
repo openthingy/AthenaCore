@@ -6,7 +6,10 @@ interface Client {
     name: string,
     email: string,
     vatId: string,
-    address: Address
+    address: {
+        billing: Address,
+        shipping: Address
+    }
 }
 
 export { Client };

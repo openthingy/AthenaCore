@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 
-interface taxRate {
+interface TaxRate {
     _id: ObjectId,
     countryCode: string,
     taxPercentage: number,
@@ -8,4 +8,4 @@ interface taxRate {
     description: string
 }
 
-export { taxRate };
+export { TaxRate };
