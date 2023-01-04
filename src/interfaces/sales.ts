@@ -1,17 +1,8 @@
 import { ObjectId } from "mongodb";
 import { Client } from "./client";
 import { Address } from "./general";
-import { TaxRate } from "./taxes";
-
-interface Item {
-    // Net Price - no taxes
-    // Gross Price - taxes included
-    itemId: ObjectId,
-    netPrice: number,
-    quant: number,
-    tax: TaxRate, // in percentage (23 = 23%)
-    grossPrice: number
-}
+import { Item } from "./logistics/items";
+import { Employee } from "./people";
 
 interface Sale {
     _id: ObjectId,
@@ -23,7 +14,7 @@ interface Sale {
     },
     paymentMethod: string,
     date: Date
-    registeredBy: Client["_id"]
+    registeredBy: Employee["_id"]
 }
 
-export { Sale };
+export { Sale, Item };
