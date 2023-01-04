@@ -1,9 +1,11 @@
+import { ObjectId } from "mongodb";
 import { Employee } from "../interfaces/people";
 import { employee } from "../people/employee";
 
 console.log("Test 2: Inserting a employee");
 const employeeData: Employee = {
-    id: "123",
+    _id: new ObjectId(),
+    empId: "123",
     name: "John Doe",
     dob: new Date("1990-01-01"),
     address: {

@@ -53,7 +53,7 @@ class employee {
      * @param {Employee["email"]} [id] Employee email.
      * @returns {object|null} Returns the employee if it exists
      */
-    public static async getEmployee(id?: ObjectId, empId?: Employee["id"], email?: Employee["email"]) {
+    public static async getEmployee(id?: ObjectId, empId?: Employee["empId"], email?: Employee["email"]) {
         if (typeof id != "undefined") {
             return this.getEmployeeById(id);
         } else if (typeof empId != "undefined") {
@@ -93,7 +93,7 @@ class employee {
      * @param {Employee["id"]} empid Employee Id.
      * @returns {object|null} Returns the specific employee
      */
-    private static async getEmployeeByEmpId(empId: Employee["id"]) {
+    private static async getEmployeeByEmpId(empId: Employee["empId"]) {
         const dbClient = await db.generateConnection();
         try {
             const empCollection = dbClient.db("people").collection("employees");
