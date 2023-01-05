@@ -9,11 +9,21 @@ const client: Client = {
     email: "john@smith.com",
     vatId: "1234567890",
     address: {
-        street: "Main St",
-        houseNumber: "1",
-        postalCode: "12345",
-        city: "New York",
-        country: "USA",
+        billing: {
+            street: "Main St",
+            houseNumber: "1",
+            postalCode: "12345",
+            city: "New York",
+            country: "USA"
+        },
+        shipping: {
+            street: "Main St",
+            houseNumber: "1",
+            postalCode: "12345",
+            city: "New York",
+            country: "USA"
+        }
+
     },
 };
 
@@ -23,7 +33,7 @@ async function test() {
     console.log("Getting the client");
     const getResult = await clients.getClient(new ObjectId());
     if (getResult) {
-        console.log(getResult.address.city);
+        console.log(getResult.address.billing.city);
     }
 }
 
