@@ -12,9 +12,12 @@ interface Sale {
         billing: Address,
         shipping: Address
     },
+    grossTotal: number, // Gross Price - taxes included
+    netTotal: number, // Net Price - no taxes
+    taxesTotal: number, // Total in taxes
     paymentMethod: string,
     date: Date
     registeredBy: Employee["_id"]
 }
 
-export { Sale, Item };
+export { Sale };
