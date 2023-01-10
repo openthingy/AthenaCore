@@ -4,7 +4,11 @@ import { TaxRate } from "../taxes";
 interface Item {
     // Net Price - no taxes
     // Gross Price - taxes included
-    itemId: ObjectId,
+    _id: ObjectId,
+    itemId: number,
+    name: string,
+    ean: string, //EAN might start by 0 for a number would eliminate that
+    description: string,
     characteristics: Array<ItemCharacteristics>,
     netPrice: number,
     quant: number,
