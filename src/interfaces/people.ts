@@ -1,7 +1,9 @@
+import { ObjectId } from "mongodb";
 import { Address } from "./general";
 
 interface Employee {
-    id: string,
+    _id: ObjectId,
+    empId: string,
     name: string,
     dob: Date,
     address: Address,

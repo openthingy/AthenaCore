@@ -2,12 +2,14 @@ import { ObjectId } from "mongodb";
 import { Address } from "./general";
 
 interface Client {
-    _id: ObjectId | undefined,
-    name: string, // Legal Name
-    dob: string,
+    _id: ObjectId,
+    name: string,
     email: string,
     vatId: string,
-    address: Address
+    address: {
+        billing: Address,
+        shipping: Address
+    }
 }
 
 export { Client };
