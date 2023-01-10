@@ -53,7 +53,7 @@ class employee {
      * @param {Employee["email"]} [id] Employee email.
      * @returns {object|null} Returns the employee if it exists
      */
-    public static async getEmployee(id?: ObjectId, empId?: Employee["empId"], email?: Employee["email"]) {
+    public static async getEmployee(id?: Employee["_id"], empId?: Employee["empId"], email?: Employee["email"]) {
         if (typeof id != "undefined") {
             return this.getEmployeeById(id);
         } else if (typeof empId != "undefined") {
